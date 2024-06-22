@@ -1,5 +1,5 @@
 <template>
   <div>
-    <h1> Hello Word </H1>
+    <h1> Hello Word </h1> 
   </div>
 </template>
