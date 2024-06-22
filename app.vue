@@ -1,3 +1,5 @@
 <template>
-  <h1>Hello Dunia</h1>
+  <div>
+    <NuxtPage />
+  </div>
 </template>
