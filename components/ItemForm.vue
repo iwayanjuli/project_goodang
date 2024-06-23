@@ -1,59 +1,91 @@
 <template>
-  <div>
-    <h2>{{ isEdit ? "Edit Item" : "Add Item" }}</h2>
-    <form @submit.prevent="handleSubmit">
-      <div>
-        <label for="id">ID Barang:</label>
-        <input type="text" v-model="item.id" id="id" :disabled="isEdit" required />
-      </div>
-      <div>
-        <label for="name">Nama Barang:</label>
-        <input type="text" v-model="item.name" id="name" required />
-      </div>
-      <div>
-        <label for="quantity">Quantity:</label>
-        <input type="number" v-model="item.quantity" id="quantity" required />
-      </div>
-      <div>
-        <label for="expDate">Exp. Date:</label>
-        <input type="date" v-model="item.expDate" id="expDate" required />
-      </div>
-      <button type="submit">{{ isEdit ? "Update" : "Add" }}</button>
-      <button type="button" @click="resetForm">Cancel</button>
-    </form>
+  <div class="card">
+    <div class="card-body">
+      <h5 class="card-title">{{ isEdit ? "Edit Item" : "Add New Item" }}</h5>
+      <form @submit.prevent="handleSubmit">
+        <div class="mb-3">
+          <label for="name" class="form-label">Name</label>
+          <input v-model="item.name" type="text" class="form-control" id="name" required />
+        </div>
+        <div class="mb-3">
+          <label for="quantity" class="form-label">Quantity</label>
+          <input v-model.number="item.quantity" type="number" class="form-control" id="quantity" required />
+        </div>
+        <div class="mb-3">
+          <label for="expDate" class="form-label">Expiration Date</label>
+          <input v-model="item.expDate" type="date" class="form-control" id="expDate" required />
+        </div>
+        <div class="mb-3">
+          <label for="image" class="form-label">Image</label>
+          <input type="file" class="form-control" id="image" accept="image/*" @change="handleFileUpload" />
+        </div>
+        <div v-if="item.imageUrl" class="mb-3">
+          <img :src="item.imageUrl" alt="Item Image" class="img-fluid" style="max-height: 200px" />
+        </div>
+        <div class="mb-3">
+          <button type="submit" class="btn btn-primary">{{ isEdit ? "Update" : "Add" }}</button>
+          <button type="button" class="btn btn-secondary" @click="$emit('cancel')">Cancel</button>
+        </div>
+      </form>
+    </div>
   </div>
 </template>
 
-<script>
-export default {
-  props: {
-    initialItem: {
-      type: Object,
-      default: () => ({ id: "", name: "", quantity: 1, expDate: "" }),
-    },
-    isEdit: {
-      type: Boolean,
-      default: false,
-    },
+<script setup>
+import { ref, watch } from "vue";
+
+const props = defineProps({
+  initialItem: {
+    type: Object,
+    required: true,
   },
-  data() {
-    return {
-      item: { ...this.initialItem },
+  isEdit: {
+    type: Boolean,
+    required: true,
+  },
+});
+const emit = defineEmits(["submit", "cancel"]);
+const item = ref({ ...props.initialItem });
+
+watch(
+  () => props.initialItem,
+  (newVal) => {
+    item.value = { ...newVal };
+  }
+);
+
+const handleSubmit = () => {
+  emit("submit", item.value);
+};
+
+const handleFileUpload = (event) => {
+  const file = event.target.files[0];
+  if (file) {
+    const reader = new FileReader();
+    reader.onload = (e) => {
+      item.value.imageUrl = e.target.result;
     };
-  },
-  methods: {
-    handleSubmit() {
-      this.$emit("submit", this.item);
-      this.resetForm();
-    },
-    resetForm() {
-      this.item = { id: "", name: "", quantity: 1, expDate: "" };
-      this.$emit("cancel");
-    },
-  },
+    reader.readAsDataURL(file);
+  }
 };
 </script>
 
 <style scoped>
-/* Tambahkan gaya sesuai kebutuhan Anda */
+.card {
+  margin-top: 20px;
+  max-width: 400px; /* Lebar maksimum form */
+  margin-left: auto; /* Posisi form di tengah */
+  margin-right: auto; /* Posisi form di tengah */
+}
+
+.card-title {
+  text-align: center;
+  color: #343a40;
+}
+
+.img-fluid {
+  max-width: 100%;
+  height: auto;
+  object-fit: contain;
+}
 </style>
