@@ -1,5 +1,4 @@
 import axios from "axios";
-
 export default defineNuxtPlugin((nuxtApp) => {
   const instance = axios.create({
     baseURL: process.env.BASE_URL || "http://localhost:3000",
