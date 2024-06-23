@@ -7,11 +7,10 @@ export default defineNuxtConfig({
     //   // Konfigurasi tambahan di sini
     // },
   },
-  // modules: ["@nuxtjs/axios"],
-  // // axios: {
-  // //   baseURL: process.env.BASE_URL || "http://localhost:3000",
-  // //   // konfigurasi axios lainnya jika diperlukan
-  // // },
-
+  modules: ["@nuxtjs/axios"],
+  axios: {
+    baseURL: process.env.BASE_URL || "http://localhost:3000",
+    // konfigurasi axios lainnya jika diperlukan
+  },
   plugins: ["~/plugins/firebase.js"],
 });
