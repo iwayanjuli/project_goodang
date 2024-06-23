@@ -47,7 +47,8 @@ export default {
 .item-content {
   display: flex;
   align-items: center;
-  flex: 1; /* Mengisi ruang yang tersedia */
+  flex: 1;
+  /* Mengisi ruang yang tersedia */
 }
 
 .item-image-container {

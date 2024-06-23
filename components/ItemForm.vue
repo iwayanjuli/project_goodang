@@ -73,9 +73,9 @@ const handleFileUpload = (event) => {
 <style scoped>
 .card {
   margin-top: 20px;
-  max-width: 400px; /* Lebar maksimum form */
-  margin-left: auto; /* Posisi form di tengah */
-  margin-right: auto; /* Posisi form di tengah */
+  max-width: 400px;
+  margin-left: auto;
+  margin-right: auto;
 }
 
 .card-title {
