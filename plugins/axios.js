@@ -5,10 +5,8 @@ export default defineNuxtPlugin((nuxtApp) => {
     baseURL: process.env.BASE_URL || "http://localhost:3000",
   });
 
-  // Optionally add interceptors
   instance.interceptors.request.use(
     (config) => {
-      // Modify request config if necessary
       return config;
     },
     (error) => {
@@ -18,7 +16,6 @@ export default defineNuxtPlugin((nuxtApp) => {
 
   instance.interceptors.response.use(
     (response) => {
-      // Modify response data if necessary
       return response;
     },
     (error) => {
@@ -26,6 +23,5 @@ export default defineNuxtPlugin((nuxtApp) => {
     }
   );
 
-  // Provide Axios instance to the app
   nuxtApp.provide("axios", instance);
 });
