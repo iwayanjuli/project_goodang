@@ -1,7 +1,7 @@
 import { defineNuxtConfig } from "nuxt/config";
 
 export default defineNuxtConfig({
-  css: ["bootstrap/dist/css/bootstrap.min.css", "~/assets/css/main.css"],
+  css: ["~/assets/css/main.css"],
   plugins: ["~/plugins/axios.js", "~/plugins/firebase.js"],
   ssr: true, // Ensure SSR is enabled
   target: "server", // Ensure SSR target is set correctly

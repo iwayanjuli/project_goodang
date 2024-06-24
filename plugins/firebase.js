@@ -4,12 +4,12 @@ import { getAuth, signInAnonymously } from "firebase/auth";
 
 export default defineNuxtPlugin((nuxtApp) => {
   const config = {
-    apiKey: nuxtApp.$config.firebaseConfig.apiKey,
-    authDomain: nuxtApp.$config.firebaseConfig.authDomain,
-    projectId: nuxtApp.$config.firebaseConfig.projectId,
-    storageBucket: nuxtApp.$config.firebaseConfig.storageBucket,
-    messagingSenderId: nuxtApp.$config.firebaseConfig.messagingSenderId,
-    appId: nuxtApp.$config.firebaseConfig.appId,
+    apiKey: "AIzaSyAM0YfcmGMeSeCbWxxfclP6BDDKAdlTxnI",
+    authDomain: "goodang-project-3f7f4.firebaseapp.com",
+    projectId: "goodang-project-3f7f4",
+    storageBucket: "goodang-project-3f7f4.appspot.com",
+    messagingSenderId: "399137880407",
+    appId: "1:399137880407:web:fcd6bc7c9e3a15358aa612",
   };
 
   // Initialize Firebase
