@@ -97,6 +97,12 @@ const filteredItems = computed(() => {
 
 // Fetch items on component mount
 fetchItems();
+
+const pageTitle = ref('Goodang'); 
+
+onMounted(() => {
+  document.title = pageTitle.value; 
+});
 </script>
 
 <style scoped>
