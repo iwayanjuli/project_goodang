@@ -1,4 +1,3 @@
-<!-- pages/index.vue -->
 <template>
   <div class="container mt-5">
     <h1 class="text-center mb-4">GOODANG</h1>
@@ -25,7 +24,7 @@ const { $firestore } = useNuxtApp();
 const items = ref([]);
 const showForm = ref(false);
 const isEdit = ref(false);
-const selectedItem = reactive({ id: "", name: "", quantity: 1, expDate: "", imageUrl: "" });
+const selectedItem = reactive({ name: "", quantity: 1, expDate: "", imageUrl: "" });
 const searchQuery = ref("");
 
 const itemsCollection = collection($firestore, "goodang");
@@ -40,11 +39,7 @@ const fetchItems = async () => {
 };
 
 const handleAddClick = () => {
-  selectedItem.id = "";
-  selectedItem.name = "";
-  selectedItem.quantity = 1;
-  selectedItem.expDate = "";
-  selectedItem.imageUrl = "";
+  Object.assign(selectedItem, { name: "", quantity: 1, expDate: "", imageUrl: "" });
   isEdit.value = false;
   showForm.value = true;
 };

@@ -3,10 +3,6 @@
     <h2>{{ isEdit ? "Edit Item" : "Add Item" }}</h2>
     <form @submit.prevent="handleSubmit" class="item-form">
       <div class="form-group">
-        <label for="id">ID Barang:</label>
-        <input type="text" v-model="item.id" id="id" :disabled="isEdit" required />
-      </div>
-      <div class="form-group">
         <label for="name">Nama Barang:</label>
         <input type="text" v-model="item.name" id="name" required />
       </div>
@@ -36,7 +32,7 @@ export default {
   props: {
     initialItem: {
       type: Object,
-      default: () => ({ id: "", name: "", quantity: 1, expDate: "", imageUrl: "" }),
+      default: () => ({ name: "", quantity: 1, expDate: "", imageUrl: "" }),
     },
     isEdit: {
       type: Boolean,
@@ -54,7 +50,7 @@ export default {
       this.resetForm();
     },
     resetForm() {
-      this.item = { id: "", name: "", quantity: 1, expDate: "", imageUrl: "" };
+      this.item = { name: "", quantity: 1, expDate: "", imageUrl: "" };
       this.$emit("cancel");
     },
     handleImageChange(event) {
