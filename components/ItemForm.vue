@@ -21,7 +21,7 @@
       </div>
       <div class="button-group">
         <button type="submit">{{ isEdit ? "Update" : "Add" }}</button>
-        <button type="button" @click="resetForm">Cancel</button>
+        <button type="button" @click="resetForm" class="cancel-button">Cancel</button>
       </div>
     </form>
   </div>
@@ -112,6 +112,15 @@ button {
 
 button:hover {
   background-color: #0056b3;
+}
+
+button.cancel-button {
+  background-color: #dc3545;
+  margin-left: 10px;
+}
+
+button.cancel-button:hover {
+  background-color: #c82333;
 }
 
 .button-group {
