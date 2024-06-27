@@ -2,7 +2,9 @@
   <div class="container mt-5">
     <h1 class="text-center mb-4">GOODANG</h1>
     <div class="add-button-container mb-4">
-      <button v-if="!showForm" class="btn btn-primary" @click="handleAddClick"><i class="fas fa-plus"></i> Tambah Barang</button>
+      <button v-if="!showForm" class="btn btn-primary" @click="handleAddClick">
+        <i class="fas fa-plus"></i> Tambah Barang
+      </button>
       <div class="search-container">
         <input v-model="searchQuery" type="text" class="form-control search-input" placeholder="Search items..." />
         <i class="fas fa-search search-icon"></i>
@@ -90,6 +92,11 @@ const filteredItems = computed(() => {
   return items.value.filter((item) => item.name.toLowerCase().includes(searchQuery.value.toLowerCase()));
 });
 
+// Computed property to calculate total quantity
+const totalQuantity = computed(() => {
+  return items.value.reduce((total, item) => total + item.quantity, 0);
+});
+
 // Fetch items on component mount
 fetchItems();
 </script>
@@ -104,6 +111,12 @@ body {
 }
 
 h1 {
+  color: #343a40;
+  font-weight: bold;
+  text-align: center;
+}
+
+h2 {
   color: #343a40;
   font-weight: bold;
   text-align: center;
