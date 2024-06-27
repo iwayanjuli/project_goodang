@@ -1,6 +1,7 @@
 <template>
   <div>
     <h2>Daftar Barang</h2>
+    <h2>Total Barang: {{ totalQuantity }}</h2>
     <div class="item-list">
       <div class="item-card" v-for="item in items" :key="item.id">
         <img :src="item.imageUrl" alt="Gambar" class="item-image" v-if="item.imageUrl" />
@@ -26,10 +27,19 @@ export default {
       required: true,
     },
   },
+  computed: {
+    totalQuantity() {
+      return this.items.reduce((total, item) => total + item.quantity, 0);
+    },
+  },
 };
 </script>
 
 <style scoped>
+h2 {
+  display: flex;
+}
+
 .item-list {
   display: flex;
   flex-direction: column;
