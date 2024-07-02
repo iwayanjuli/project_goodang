@@ -1,5 +1,6 @@
 <template>
   <!-- <div class="container mt-5"> -->
+    <title>GOODANG</title>
     <h1 class="text-center mb-4">
       <span class="g">G</span><span class="o">O</span><span class="o">O</span><span class="d">D</span><span class="a">A</span><span class="n">N</span><span class="g">G</span>
     </h1>
@@ -137,7 +138,7 @@ h1 {
   align-items: center;
   padding-inline-end: 20%;
   font-weight: bold;
-  font-size: large;
+  font-size: 18px;
   font-family: 'Poppins', sans-serif;
   height: 5vh;
 }
