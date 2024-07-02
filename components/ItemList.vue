@@ -1,7 +1,10 @@
 <template>
-  <div>
-    <h2>Daftar Barang</h2>
-    <h2>Total Barang: {{ totalQuantity }}</h2>
+  <div class="list-container">
+    <div class="header-container">
+      <h2>Daftar Barang</h2>
+      <h2>Total Barang: {{ totalQuantity }}</h2>
+    </div>
+    
     <div class="item-list">
       <div class="item-card" v-for="item in items" :key="item.id">
         <img :src="item.imageUrl" alt="Gambar" class="item-image" v-if="item.imageUrl" />
@@ -36,14 +39,41 @@ export default {
 </script>
 
 <style scoped>
-h2 {
-  display: flex;
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
+
+.list-container{
+  margin-left: 20%;
+  margin-right: 20%;
+  font-family: 'Poppins', sans-serif;
 }
 
-.item-list {
+.header-container {
   display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px;
+  background-color: #5966A6;
+   /* #e85fec; */
+  color: white;
+  border-bottom: 1px solid #ccc;
+}
+
+.header-container h2 {
+  margin: 0;
+}
+
+
+.item-list {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr); /* Mengatur 3 kolom dengan lebar yang sama */
   flex-direction: column;
   gap: 10px;
+  font-family: 'Poppins', sans-serif;
+}
+
+.item-card:hover {
+  box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.2);
+  transform: scale(1.05);
 }
 
 .item-card {

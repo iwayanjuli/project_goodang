@@ -1,6 +1,6 @@
 <template>
   <div>
-    <h2>{{ isEdit ? "Edit Item" : "Add Item" }}</h2>
+    <h2 >{{ isEdit ? "Edit Item" : "Add Item" }}</h2>
     <form @submit.prevent="handleSubmit" class="item-form">
       <div class="form-group">
         <label for="name">Nama Barang:</label>
@@ -70,6 +70,11 @@ export default {
 </script>
 
 <style scoped>
+
+h2 {
+  text-align: center;
+}
+
 .item-form {
   max-width: 400px;
   margin: 0 auto;
